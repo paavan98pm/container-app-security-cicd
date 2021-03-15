@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paavan98pm/test.git"
+    "url": "git+https://github.com/paavan98pm/container-app-security-cicd.git"
   },
   "author": "Paavan Mistry",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/paavan98pm/test/issues"
+    "url": "https://github.com/paavan98pm/container-app-security-cicd/issues"
   },
-  "homepage": "https://github.com/paavan98pm/test#readme"
+  "homepage": "https://github.com/paavan98pm/container-app-security-cicd#readme"
 }
