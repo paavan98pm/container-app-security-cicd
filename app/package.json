@@ -1,0 +1,24 @@
+{
+  "name": "devday",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./app/app.js",
+  "dependencies": {
+    "http": "latest",
+    "random-bool": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paavan98pm/test.git"
+  },
+  "author": "Paavan Mistry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paavan98pm/test/issues"
+  },
+  "homepage": "https://github.com/paavan98pm/test#readme"
+}
