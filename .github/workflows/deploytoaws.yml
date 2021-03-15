@@ -50,21 +50,21 @@ jobs:
         echo $ECR_REGISTRY
         echo $ECR_REPOSITORY
         echo $IMAGE_TAG
-        # CURRENT_STATUS=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanStatus.status)
-        # echo "Current ECR scan status is: $CURRENT_STATUS"
-        # while [ "${CURRENT_STATUS^^}" != "COMPLETE" ];
-        #   do sleep 3;
-        #   CURRENT_STATUS=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanStatus.status)
-        # done;
-        # echo "Current ECR scan status is: $CURRENT_STATUS"
-        # HIGH_VULNERABILITIES=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanFindings.findingSeverityCounts.HIGH)
-        # echo "HIGH_VULNERABILITIES: $HIGH_VULNERABILITIES"
-        # CRITICAL_VULNERABILITIES=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanFindings.findingSeverityCounts.CRITICAL)
-        # echo "CRITICAL_VULNERABILITIES: $CRITICAL_VULNERABILITIES"
-        # if [[ $HIGH_VULNERABILITIES -gt 0 || $CRITICAL_VULNERABILITIES -gt 0 ]];
-        #   then echo "ECR scan results have high or critical vulnerabilities. Cancelling deploy.";
-        #   exit 1;
-        # fi
+        CURRENT_STATUS=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanStatus.status)
+        echo "Current ECR scan status is: $CURRENT_STATUS"
+        while [ "${CURRENT_STATUS^^}" != "COMPLETE" ];
+          do sleep 3;
+          CURRENT_STATUS=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanStatus.status)
+        done;
+        echo "Current ECR scan status is: $CURRENT_STATUS"
+        HIGH_VULNERABILITIES=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanFindings.findingSeverityCounts.HIGH)
+        echo "HIGH_VULNERABILITIES: $HIGH_VULNERABILITIES"
+        CRITICAL_VULNERABILITIES=$(aws ecr describe-image-scan-findings --repository-name my-ecr-repo --image-id imageTag=$IMAGE_TAG | jq -r .imageScanFindings.findingSeverityCounts.CRITICAL)
+        echo "CRITICAL_VULNERABILITIES: $CRITICAL_VULNERABILITIES"
+        if [[ $HIGH_VULNERABILITIES -gt 0 || $CRITICAL_VULNERABILITIES -gt 0 ]];
+          then echo "ECR scan results have high or critical vulnerabilities. Cancelling deploy.";
+          exit 1;
+        fi
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
