@@ -16,7 +16,7 @@
     "url": "git+https://github.com/paavan98pm/container-app-security-cicd.git"
   },
   "author": "Paavan Mistry",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/paavan98pm/container-app-security-cicd/issues"
   },
